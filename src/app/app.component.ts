@@ -28,6 +28,7 @@ export class AppComponent {
     const id = this.todos.length + 1;
     const done = false;
     this.todos.push({id, title, done});
+    this.save();
     this.clear();
   }
 
@@ -49,5 +50,10 @@ export class AppComponent {
 
   markAsUndone(todo: Todo){
     todo.done = false;
+  }
+
+  save(){
+    const data = JSON.stringify(this.todos);
+    localStorage.setItem('todos', data);
   }
 }
